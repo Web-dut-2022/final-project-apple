@@ -23,5 +23,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('blog/',include(('blog.urls', 'blog'),namespace='blog')),
     path('account/',include(('account.urls','account'),namespace='account')),
-
+    path('article/',include('article.urls',namespace='article')),
 ]
