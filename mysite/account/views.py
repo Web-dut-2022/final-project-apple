@@ -67,6 +67,7 @@ def myself_edit(request):
             userinfo.profession = userinfo_cd['profession']
             userinfo.address = userinfo_cd['address']
             userinfo.aboutme = userinfo_cd['aboutme']
+            #userinfo.photo = userinfo_cd['photo']
             request.user.save()
             #userprofile.save()
             userinfo.save()
@@ -74,7 +75,7 @@ def myself_edit(request):
     else:
         user_form = UserForm(instance=request.user)
         #userprofile_form = UserProfileForm(initial={"birth":userprofile.birth, "phone":userprofile.phone})
-        userinfo_form = UserInfoForm(initial={"school":userinfo.school, "company":userinfo.company, "profession":userinfo.profession, "address":userinfo.address, "aboutme":userinfo.aboutme})
+        userinfo_form = UserInfoForm(initial={"school":userinfo.school, "company":userinfo.company, "profession":userinfo.profession, "address":userinfo.address, "aboutme":userinfo.aboutme,})
         return render(request, "account/myself_edit.html", {"user_form":user_form, "userinfo_form":userinfo_form})
 
 @login_required(login_url='/account/login/')
