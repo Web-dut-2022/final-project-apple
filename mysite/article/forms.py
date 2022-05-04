@@ -1,7 +1,12 @@
 from django import forms
-from .models import ArticleColumn
+from .models import ArticleColumn, ArticlePost
 
 class ArticleColumnForm(forms.ModelForm):
-    class meta:
+    class Meta:
         model=ArticleColumn
         fields=("column",)
+
+class AritclePostForm(forms.ModelForm):
+    class Meta:
+        model=ArticlePost
+        fields=("title","body")

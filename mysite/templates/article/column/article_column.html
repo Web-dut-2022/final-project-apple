@@ -1,5 +1,5 @@
 {% extends "article/base.html" %}
-{% load staticfiles %}
+{% load static %}
 {% block title %}article column{% endblock %}
 {% block content %}
 <div>
@@ -14,10 +14,7 @@
     	<tr>
     	    <td>{{ forloop.counter }}</td>
     	    <td>{{ column.column }}</td>
-    	    <td>
-                <a name="edit" href="javascript:" onclick="edit_column(this, {{ column.id }})"><span class="glyphicon glyphicon-pencil"></span></a>
-                <a name="delete" href="javascript:" onclick="del_column(this, {{ column.id }})"><span class="glyphicon glyphicon-trash" style="margin-left:20px;"></span></a>
-            </td>
+    	    <td>...</td>
     	</tr>
     	{% empty %}
     	<p>请设置栏目</p>
