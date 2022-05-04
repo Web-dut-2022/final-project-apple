@@ -7,7 +7,7 @@ from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 from .models import ArticleColumn, ArticlePost, ArticleTag
-from .forms import ArticleColumnForm, ArticlePostForm, ArticleTagForm
+from .forms import AritclePostForm, ArticleColumnForm 
 
 import json
 
@@ -17,7 +17,7 @@ def article_column(request):
     if request.method == "GET":
         columns = ArticleColumn.objects.filter(user=request.user)
         column_form = ArticleColumnForm()
-        return render(request, "article/column/article_column.html", {"columns":columns, 'column_form':column_form})
+        return render(request, "article/column/article_column.html", {"columns":columns})
 
     if request.method == "POST":
         column_name = request.POST['column']
@@ -59,7 +59,7 @@ def del_article_column(request):
 @csrf_exempt
 def article_post(request):
     if request.method=="POST":
-        article_post_form = ArticlePostForm(data=request.POST)
+        article_post_form = AritclePostForm(data=request.POST)
         if article_post_form.is_valid():
             cd = article_post_form.cleaned_data
             try:
