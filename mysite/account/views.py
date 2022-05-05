@@ -7,6 +7,7 @@ from .forms import LoginForm, UserInfoForm,UserForm
 from .forms import LoginForm,RegistrationForm
 from django.contrib.auth.decorators import login_required
 from .models import  UserInfo 
+from django.urls import reverse
 
 def user_login(request):
     if request.method == "POST":
@@ -33,8 +34,8 @@ def register(request):
             new_user = user_form.save(commit=False)
             new_user.set_password(user_form.cleaned_data['password'])
             new_user.save()
-            return HttpResponse("successfully")
-            #return HttpResponseRedirect(reverse("account:user_login"))
+            #return HttpResponse("successfully")
+            return HttpResponseRedirect(reverse("account:user_login"))
         else:
             return HttpResponse("sorry, your can not register.")
     else:
